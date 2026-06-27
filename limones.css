@@ -1,31 +1,204 @@
+/* ==========================================
+   VARIABLES Y CONFIGURACIÓN BASE
+   ========================================== */
+:root {
+  --bg-principal: #0b0f19;
+  --bg-tarjeta: #1e293b;
+  --color-limon: #eab308;
+  --color-limon-brillo: #fde047;
+  --color-text: #f8fafc;
+  --color-borde: #38bdf8;
+  --neon-glow: rgba(234, 179, 8, 0.3);
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #0f172a;
-  color: white;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-principal);
+  background-image: 
+    radial-gradient(at 50% 0%, rgba(234, 179, 8, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(56, 189, 248, 0.08) 0px, transparent 50%);
+  color: var(--color-text);
   text-align: center;
   margin: 0;
-  padding: 20px;
+  padding: 10px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contenedor {
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================
+   ENCABEZADO (TEXTOS)
+   ========================================== */
+.encabezado-juego h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.8rem;
+  color: var(--color-limon);
+  text-shadow: 0 0 10px var(--neon-glow), 3px 3px 0px #111827;
+  margin: 0 0 10px 0;
+  letter-spacing: -1px;
+}
+
+.subtitulo {
+  font-style: italic;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  margin: 0 0 5px 0;
+}
+
+.autor {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #38bdf8;
+  margin: 0 0 25px 0;
+  font-weight: 600;
+}
+
+/* ==========================================
+   PANEL DE MARCADORES (PUNTAJE / VIDAS)
+   ========================================== */
+.panel {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.marcador {
+  background: #111827;
+  border: 2px solid #334155;
+  padding: 12px 25px;
+  border-radius: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.marcador.puntaje {
+  border-color: var(--color-limon);
+}
+
+.marcador.vidas {
+  border-color: #ef4444; /* Rojo para las vidas */
+}
+
+.etiqueta {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #94a3b8;
+}
+
+.valor {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.4rem;
+}
+
+.puntaje .valor { color: var(--color-limon-brillo); }
+.vidas .valor { color: #fca5a5; }
+
+/* ==========================================
+   ÁREA DE JUEGO (CANVAS)
+   ========================================== */
+.canvas-contenedor {
+  background: #000;
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+  display: inline-block;
+  margin-bottom: 25px;
+  border: 2px solid var(--color-borde);
 }
 
 canvas {
   background-color: #111827;
-  border: 3px solid #38bdf8;
   display: block;
-  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
 }
 
-.panel {
-  margin: 20px 0;
+/* ==========================================
+   BOTONES Y CONTROLES
+   ========================================== */
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 
-.botones button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 16px;
+.btn {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Botones de movimiento (Izquierda / Derecha) */
+.btn-control {
+  background-color: #334155;
+  color: var(--color-text);
+  border-bottom: 4px solid #1e293b;
+  flex: 1;
+  max-width: 150px;
+}
+
+.btn-control:hover {
+  background-color: #475569;
+  transform: translateY(-2px);
+}
+
+.btn-control:active {
+  transform: translateY(2px);
+  border-bottom-width: 0px;
+  margin-bottom: 4px;
+}
+
+/* Botón de Reiniciar */
+.btn-accion {
+  background: linear-gradient(135deg, var(--color-limon), #ca8a04);
+  color: #111827;
+  font-weight: 800;
+  border-bottom: 4px solid #a16207;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.btn-accion:hover {
+  background: linear-gradient(135deg, var(--color-limon-brillo), var(--color-limon));
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-accion:active {
+  transform: translateY(2px);
+  border-bottom-width: 0px;
+  margin-bottom: 4px;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 640px) {
+  .contenedor { padding: 15px; }
+  .encabezado-juego h1 { font-size: 1.3rem; }
+  .panel { flex-direction: row; }
+  .btn { padding: 10px 16px; font-size: 0.9rem; }
 }

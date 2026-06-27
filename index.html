@@ -1,25 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Caza Estrellas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caza Estrellas - Atrapar Limones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="limones.css"/>
   <script src="utils.js"></script>
 </head>
 <body onload="iniciar()">
   <div class="contenedor">
-    <h1>Atrapar Limones</h1>
-    <p>Si del cielo te caen limones ..... </p>
-    <h2>Autor: Kevin Quishpe </h2>
-    <canvas id="areaJuego" width="600" height="400"></canvas>
-    <div class="panel">
-      <p>Puntaje: <span id="txtPuntaje">0</span></p>
-      <p>Vidas: <span id="txtVidas">3</span></p>
-    </div>
-    <div class="botones">
-      <button onclick="moverIzquierda()">Izquierda</button>
-      <button onclick="moverDerecha();">Derecha</button>
-      <button onclick="reiniciar();">Reiniciar</button>
-    </div>
+    
+    <header class="encabezado-juego">
+      <h1>Atrapar Limones</h1>
+      <p class="subtitulo">Si del cielo te caen limones ..... 🍋</p>
+      <h2 class="autor">Autor: Kevin Quishpe</h2>
+    </header>
+
+    <main class="pantalla-principal">
+      <div class="panel">
+        <div class="marcador puntaje">
+          <span class="etiqueta">Puntaje</span>
+          <span id="txtPuntaje" class="valor">0</span>
+        </div>
+        <div class="marcador vidas">
+          <span class="etiqueta">Vidas</span>
+          <span id="txtVidas" class="valor">3</span>
+        </div>
+      </div>
+
+      <div class="canvas-contenedor">
+        <canvas id="areaJuego" width="600" height="400"></canvas>
+      </div>
+
+      <div class="botones">
+        <button onclick="moverIzquierda()" class="btn btn-control">◀ Izquierda</button>
+        <button onclick="reiniciar();" class="btn btn-accion">🔄 Reiniciar</button>
+        <button onclick="moverDerecha();" class="btn btn-control">Derecha ▶</button>
+      </div>
+    </main>
+
   </div>
   <script src="limones.js"></script>
 </body>
