@@ -1,26 +1,25 @@
 /* ==========================================
-   VARIABLES Y CONFIGURACIÓN BASE
+   PALETA DE COLORES NEÓN Y REGLAS BASE
    ========================================== */
 :root {
-  --bg-principal: #0b0f19;
-  --bg-tarjeta: #1e293b;
-  --color-limon: #eab308;
-  --color-limon-brillo: #fde047;
-  --color-text: #f8fafc;
-  --color-borde: #38bdf8;
-  --neon-glow: rgba(234, 179, 8, 0.3);
+  --bg-cyberpunk: #030712;       /* Fondo ultra oscuro para que contrasten los leds */
+  --neon-amarillo: #ccff00;      /* Amarillo limón fluorescente */
+  --neon-cian: #00f0ff;          /* Cian eléctrico para el entorno */
+  --neon-rojo: #ff0055;          /* Rojo neón para vidas y peligro */
+  --neon-texto: #ffffff;
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
-  background-color: var(--bg-principal);
+  font-family: 'Orbitron', sans-serif;
+  background-color: var(--bg-cyberpunk);
+  /* Gradiente radial de fondo simulando reflejos de luces lejanas */
   background-image: 
-    radial-gradient(at 50% 0%, rgba(234, 179, 8, 0.15) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(56, 189, 248, 0.08) 0px, transparent 50%);
-  color: var(--color-text);
+    radial-gradient(circle at 50% 10%, rgba(204, 255, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(0, 240, 255, 0.05) 0%, transparent 50%);
+  color: var(--neon-texto);
   text-align: center;
   margin: 0;
-  padding: 10px;
+  padding: 20px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -29,103 +28,123 @@ body {
 
 .contenedor {
   width: 100%;
-  max-width: 700px;
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  max-width: 720px;
+  background: rgba(10, 15, 30, 0.8);
+  border: 2px solid rgba(0, 240, 255, 0.15);
+  border-radius: 20px;
+  padding: 35px 25px;
+  box-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.8),
+    inset 0 0 15px rgba(0, 240, 255, 0.05);
 }
 
 /* ==========================================
-   ENCABEZADO (TEXTOS)
+   EFECTOS DE TEXTO NEÓN (ENCABEZADO)
    ========================================== */
 .encabezado-juego h1 {
   font-family: 'Press Start 2P', cursive;
-  font-size: 1.8rem;
-  color: var(--color-limon);
-  text-shadow: 0 0 10px var(--neon-glow), 3px 3px 0px #111827;
-  margin: 0 0 10px 0;
+  font-size: 1.7rem;
+  color: var(--neon-amarillo);
+  margin: 0 0 12px 0;
   letter-spacing: -1px;
+  /* Capas de text-shadow para crear el brillo LED intenso */
+  text-shadow: 
+    0 0 5px rgba(204, 255, 0, 0.5),
+    0 0 10px var(--neon-amarillo),
+    0 0 20px var(--neon-amarillo),
+    0 0 40px #a3cc00;
 }
 
 .subtitulo {
-  font-style: italic;
-  color: #94a3b8;
-  font-size: 1.1rem;
-  margin: 0 0 5px 0;
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .autor {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #38bdf8;
-  margin: 0 0 25px 0;
-  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--neon-cian);
+  margin: 0 0 30px 0;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
 }
 
 /* ==========================================
-   PANEL DE MARCADORES (PUNTAJE / VIDAS)
+   PANEL DE MARCADORES LED
    ========================================== */
 .panel {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-  gap: 15px;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
 }
 
-.marcador {
-  background: #111827;
-  border: 2px solid #334155;
-  padding: 12px 25px;
-  border-radius: 16px;
+.marcador-led {
+  background: #090d16;
+  padding: 10px 20px;
+  border-radius: 12px;
   flex: 1;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+  align-items: center;
 }
 
-.marcador.puntaje {
-  border-color: var(--color-limon);
-}
-
-.marcador.vidas {
-  border-color: #ef4444; /* Rojo para las vidas */
-}
-
-.etiqueta {
-  font-size: 0.75rem;
+.marcador-led .etiqueta {
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   color: #94a3b8;
+  margin-bottom: 5px;
 }
 
-.valor {
+/* IDs del JS adaptados con las fuentes y brillos correspondientes */
+#txtPuntaje, #txtVidas {
   font-family: 'Press Start 2P', cursive;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
-.puntaje .valor { color: var(--color-limon-brillo); }
-.vidas .valor { color: #fca5a5; }
+/* Variación de luz Amarilla (Puntaje) */
+.led-amarillo {
+  border: 2px solid var(--neon-amarillo);
+  box-shadow: 0 0 12px rgba(204, 255, 0, 0.2), inset 0 0 8px rgba(204, 255, 0, 0.1);
+}
+#txtPuntaje {
+  color: #fff;
+  text-shadow: 0 0 8px var(--neon-amarillo), 0 0 15px var(--neon-amarillo);
+}
+
+/* Variación de luz Roja (Vidas) */
+.led-rojo {
+  border: 2px solid var(--neon-rojo);
+  box-shadow: 0 0 12px rgba(255, 0, 85, 0.2), inset 0 0 8px rgba(255, 0, 85, 0.1);
+}
+#txtVidas {
+  color: #fff;
+  text-shadow: 0 0 8px var(--neon-rojo), 0 0 15px var(--neon-rojo);
+}
 
 /* ==========================================
-   ÁREA DE JUEGO (CANVAS)
+   ÁREA DE JUEGO (CANVAS CON TUBOS NEÓN)
    ========================================== */
-.canvas-contenedor {
+.marco-canvas-led {
   background: #000;
-  border-radius: 16px;
-  padding: 6px;
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
   display: inline-block;
-  margin-bottom: 25px;
-  border: 2px solid var(--color-borde);
+  padding: 4px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  /* Simula el tubo de luz LED que encierra la pantalla */
+  border: 2px solid var(--neon-cian);
+  box-shadow: 
+    0 0 15px rgba(0, 240, 255, 0.4),
+    inset 0 0 15px rgba(0, 240, 255, 0.2);
 }
 
 canvas {
-  background-color: #111827;
+  background-color: #0b0f17;
   display: block;
   border-radius: 10px;
   max-width: 100%;
@@ -133,72 +152,65 @@ canvas {
 }
 
 /* ==========================================
-   BOTONES Y CONTROLES
+   BOTONES ESTILO INTERRUPTORES DE NEÓN
    ========================================== */
 .botones {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 15px;
 }
 
-.btn {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 12px;
+.btn-neon {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 0.9rem;
+  padding: 14px 22px;
+  background: transparent;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Botones de movimiento (Izquierda / Derecha) */
-.btn-control {
-  background-color: #334155;
-  color: var(--color-text);
-  border-bottom: 4px solid #1e293b;
-  flex: 1;
-  max-width: 150px;
+/* Estilo para botones de dirección (Cian Eléctrico) */
+.btn-izq, .btn-der {
+  color: var(--neon-cian);
+  border: 2px solid var(--neon-cian);
+  text-shadow: 0 0 4px rgba(0, 240, 255, 0.5);
 }
 
-.btn-control:hover {
-  background-color: #475569;
-  transform: translateY(-2px);
+.btn-izq:hover, .btn-der:hover {
+  background: var(--neon-cian);
+  color: #000;
+  box-shadow: 0 0 20px var(--neon-cian);
+  text-shadow: none;
 }
 
-.btn-control:active {
-  transform: translateY(2px);
-  border-bottom-width: 0px;
-  margin-bottom: 4px;
+/* Estilo para botón de reiniciar (Amarillo Neón) */
+.btn-reiniciar {
+  color: var(--neon-amarillo);
+  border: 2px solid var(--neon-amarillo);
+  text-shadow: 0 0 4px rgba(204, 255, 0, 0.5);
 }
 
-/* Botón de Reiniciar */
-.btn-accion {
-  background: linear-gradient(135deg, var(--color-limon), #ca8a04);
-  color: #111827;
-  font-weight: 800;
-  border-bottom: 4px solid #a16207;
-  padding-left: 30px;
-  padding-right: 30px;
+.btn-reiniciar:hover {
+  background: var(--neon-amarillo);
+  color: #000;
+  box-shadow: 0 0 20px var(--neon-amarillo);
+  text-shadow: none;
 }
 
-.btn-accion:hover {
-  background: linear-gradient(135deg, var(--color-limon-brillo), var(--color-limon));
-  box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
-  transform: translateY(-2px);
+/* Efecto de presión (Active) para todos los botones */
+.btn-neon:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 5px currentColor;
 }
 
-.btn-accion:active {
-  transform: translateY(2px);
-  border-bottom-width: 0px;
-  margin-bottom: 4px;
-}
-
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 640px) {
-  .contenedor { padding: 15px; }
-  .encabezado-juego h1 { font-size: 1.3rem; }
-  .panel { flex-direction: row; }
-  .btn { padding: 10px 16px; font-size: 0.9rem; }
+/* Responsive para dispositivos móviles */
+@media (max-width: 600px) {
+  .contenedor { padding: 20px 15px; }
+  .encabezado-juego h1 { font-size: 1.1rem; }
+  .botones { flex-direction: column; width: 100%; }
+  .btn-neon { width: 100%; padding: 12px; }
+  .panel { gap: 10px; }
 }

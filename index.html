@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caza Estrellas - Atrapar Limones</title>
+  <title>Caza Estrellas - Neón Lemon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="limones.css"/>
   <script src="utils.js"></script>
 </head>
@@ -14,31 +14,31 @@
   <div class="contenedor">
     
     <header class="encabezado-juego">
-      <h1>Atrapar Limones</h1>
+      <h1 id="tituloJuego">Atrapar Limones</h1>
       <p class="subtitulo">Si del cielo te caen limones ..... 🍋</p>
       <h2 class="autor">Autor: Kevin Quishpe</h2>
     </header>
 
-    <main class="pantalla-principal">
+    <main class="interfaz-juego">
       <div class="panel">
-        <div class="marcador puntaje">
+        <div class="marcador-led led-amarillo">
           <span class="etiqueta">Puntaje</span>
-          <span id="txtPuntaje" class="valor">0</span>
+          <span id="txtPuntaje">0</span>
         </div>
-        <div class="marcador vidas">
+        <div class="marcador-led led-rojo">
           <span class="etiqueta">Vidas</span>
-          <span id="txtVidas" class="valor">3</span>
+          <span id="txtVidas">3</span>
         </div>
       </div>
 
-      <div class="canvas-contenedor">
+      <div class="marco-canvas-led">
         <canvas id="areaJuego" width="600" height="400"></canvas>
       </div>
 
       <div class="botones">
-        <button onclick="moverIzquierda()" class="btn btn-control">◀ Izquierda</button>
-        <button onclick="reiniciar();" class="btn btn-accion">🔄 Reiniciar</button>
-        <button onclick="moverDerecha();" class="btn btn-control">Derecha ▶</button>
+        <button onclick="moverIzquierda()" class="btn-neon btn-izq">◀ IZQUIERDA</button>
+        <button onclick="reiniciar();" class="btn-neon btn-reiniciar">REINICIAR 🔄</button>
+        <button onclick="moverDerecha();" class="btn-neon btn-der">DERECHA ▶</button>
       </div>
     </main>
 
