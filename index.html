@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caza Estrellas - Neón Lemon</title>
+  <title>Caza Limones - Neón Lemon</title>
+  <!-- Fuentes especiales para el estilo Neón/Futurista/Gamer -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -20,6 +21,7 @@
     </header>
 
     <main class="interfaz-juego">
+      <!-- Marcadores con cajas de luz LED independientes -->
       <div class="panel">
         <div class="marcador-led led-amarillo">
           <span class="etiqueta">Puntaje</span>
@@ -31,16 +33,27 @@
         </div>
       </div>
 
+      <!-- El Canvas enmarcado en tubos de luz Cian -->
       <div class="marco-canvas-led">
         <canvas id="areaJuego" width="600" height="400"></canvas>
       </div>
 
+      <!-- Botones de control estilo interruptores LED -->
       <div class="botones">
         <button onclick="moverIzquierda()" class="btn-neon btn-izq">◀ IZQUIERDA</button>
         <button onclick="reiniciar();" class="btn-neon btn-reiniciar">REINICIAR 🔄</button>
         <button onclick="moverDerecha();" class="btn-neon btn-der">DERECHA ▶</button>
       </div>
     </main>
+
+    <!-- Pie de página con marca e integración del logo de FabriTekhx -->
+    <footer class="creditos-fabritekhx">
+      <div class="linea-division"></div>
+      <div class="marca-contenedor">
+        <img src="LOGO.png" alt="Logo FabriTekhx" class="logo-firma">
+        <p class="texto-firma">Powered by <span class="destacado-firma">FABRITEKHX</span></p>
+      </div>
+    </footer>
 
   </div>
   <script src="limones.js"></script>

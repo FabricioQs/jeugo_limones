@@ -214,3 +214,76 @@ canvas {
   .btn-neon { width: 100%; padding: 12px; }
   .panel { gap: 10px; }
 }
+
+/* ==========================================
+   SECCIÓN DE CRÉDITOS (FABRITEKHX LOGO)
+   ========================================== */
+.creditos-fabritekhx {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Línea de división estilo neón tenue */
+.linea-division {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent);
+  margin-bottom: 20px;
+}
+
+.marca-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto de iluminación interactiva al pasar el mouse por encima */
+.marca-contenedor:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Estilo y efectos para LOGO.png */
+.logo-firma {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  /* Un drop-shadow sutil que hace que los colores del logo resalten en la oscuridad */
+  filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.6)) drop-shadow(0 0 12px rgba(255, 0, 85, 0.4));
+  animation: sutilLuz 3s ease-in-out infinite alternate;
+}
+
+.texto-firma {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin: 0;
+  font-weight: 700;
+}
+
+.destacado-firma {
+  color: #ffffff;
+  font-weight: 900;
+  /* Efecto de texto degradado y pulido */
+  background: linear-gradient(45deg, #00f0ff, #ff0055);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Animación sutil de respiración lumínica para el logo */
+@keyframes sutilLuz {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.5)) drop-shadow(0 0 8px rgba(255, 0, 85, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 0, 85, 0.6));
+  }
+}

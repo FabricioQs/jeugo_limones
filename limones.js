@@ -35,13 +35,13 @@ function dibujarPersonaje (){
 }
 
 function moverIzquierda (){
-    personajeX=personajeX-10;
+    personajeX=personajeX-20;
     actualizarPantalla();
 
 }
 
 function moverDerecha (){
-    personajeX=personajeX+10;
+    personajeX=personajeX+20;
     actualizarPantalla();
     
 }
@@ -127,3 +127,5 @@ function reiniciar(){
 
     iniciar();
 }
+
+
